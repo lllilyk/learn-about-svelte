@@ -1,19 +1,34 @@
 <script>
-let auth = {
-  loggedIn: false
-}
-
-const handleLogin = () => auth.loggedIn = true;
-const handleLogout = () => auth.loggedIn = false;
+  let todos = [
+    {
+      id: 0,
+      content: '첫 번째 할 일',
+      done: false
+    },
+    {
+      id: 1,
+      content: '두 번째 할 일',
+      done: false
+    },
+    {
+      id: 2,
+      content: '세 번째 할 일',
+      done: true
+    },
+    {
+      id: 3,
+      content: '네 번째 할 일',
+      done: false
+    },
+  ]
 </script>
 
-<button on:click={handleLogin} >Log In</button>
-<button on:click={handleLogout} >Log Out</button>
-
-<p>{auth.loggedIn}</p>
-
-{#if auth.loggedIn === true}
-  <p>로그인 상태입니다.</p>
-{:else}
-  <p>로그아웃 상태입니다.</p>
-{/if}
+<ul>
+  {#each todos as todo}
+    <li>
+      <span>{todo.id}</span>
+      <span>{todo.content}</span>
+      <span>{todo.done}</span>
+    </li>
+  {/each}
+</ul>
