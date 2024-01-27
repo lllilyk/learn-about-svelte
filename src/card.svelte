@@ -23,9 +23,17 @@
     .address { background-image: url(tutorial/icons/map-market.svg) }
     .email   { background-image: url(tutorial/icons/email.svg) }
     .missing { color: #999 }
+
+    .hovering { background-color: #ffed99;}
 </style>
 
-<article class="contact-card">
+<script>
+    let hovering = false;
+    const enter = () => hovering = true;
+    const leave = () => hovering = false;
+</script>
+
+<article class="contact-card" class:hovering on:mouseenter={enter} on:mouseleave={leave}>
     <h2>
         <slot name="name">
             <span class="missing">이름 미입력</span>
