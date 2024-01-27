@@ -1,29 +1,54 @@
 <script>
-  import Card from "./card.svelte";
-  import Widget from "./widget.svelte";
+  import { fade, blur, fly, slide, scale, draw } from 'svelte/transition';
+
+  let visibles = {
+    'fade': false,
+    'slide': false,
+    'blur': false,
+    'fly': false,
+    'scale': false,
+  }
+
+  const changeVisible = (type) => {
+    visibles[type] = !visibles[type]
+  }
+
 </script>
 
-<Widget>
-  <h1 slot="header">Hello</h1>
-  <svelte:fragment slot="footer">
-    <p>All rights reserved.</p>
-    <p>Copyright (c) 2019 Svelte Industries</p>
-  </svelte:fragment>
-</Widget>
+<button on:click={() => changeVisible('fade')}>fade</button>
+<button on:click={() => changeVisible('slide')}>slide</button>
+<button on:click={() => changeVisible('blur')}>blur</button>
+<button on:click={() => changeVisible('fly')}>fly</button>
+<button on:click={() => changeVisible('scale')}>scale</button>
 
 <br />
 
-<Card>
-  <span slot="name">
-    한교동
-  </span>
+{#if visibles.fade}
+  <div transition:fade class="wrap">
+    <h1>fade 예제</h1>
+  </div>
+{/if}
 
-  <span slot="address">
-    산리오시티<br>
-    헬로키티네 집
-  </span>
+{#if visibles.slide}
+  <div transition:slide class="wrap">
+    <h1>slide 예제</h1>
+  </div>
+{/if}
 
-  <span slot="email">
-    mymelody@gmail.com
-  </span>
-</Card>
+{#if visibles.blur}
+  <div transition:blur class="wrap">
+    <h1>blur 예제</h1>
+  </div>
+{/if}
+
+{#if visibles.fly}
+  <div transition:fly={{x:100}} class="wrap">
+    <h1>fly 예제</h1>
+  </div>
+{/if}
+
+{#if visibles.scale}
+  <div transition:scale class="wrap">
+    <h1>scale 예제</h1>
+  </div>
+{/if}
