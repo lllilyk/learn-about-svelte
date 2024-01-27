@@ -38,9 +38,10 @@
         </slot>
     </div>
 
-    <div class="email">
-        <slot name="email">
-            <span class="missing">이메일 미입력</span>
-        </slot>
-    </div>
+    {#if $$slots.email}
+        <div class="email">
+            <hr />
+            <slot name="email"></slot>
+        </div>
+    {/if}
 </article>
