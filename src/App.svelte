@@ -21,6 +21,7 @@
 <button on:click={() => changeVisible('blur')}>blur</button>
 <button on:click={() => changeVisible('fly')}>fly</button>
 <button on:click={() => changeVisible('scale')}>scale</button>
+<button on:click={() => changeVisible('inOut')}>inOut</button>
 
 <br />
 
@@ -51,5 +52,11 @@
 {#if visibles.scale}
   <div transition:scale={{start:10}} class="wrap">
     <h1>scale 예제</h1>
+  </div>
+{/if}
+
+{#if visibles.inOut}
+  <div in:fly={{x:100}} out:slide={{duration:1000}} class="wrap">
+    <h1>inOut 예제</h1>
   </div>
 {/if}
