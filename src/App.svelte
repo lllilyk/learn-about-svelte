@@ -1,5 +1,6 @@
 <script>
   import { fade, blur, fly, slide, scale, draw } from 'svelte/transition';
+  import { bounceInOut, backOut } from 'svelte/easing';
 
   let visibles = {
     'fade': false,
@@ -24,31 +25,31 @@
 <br />
 
 {#if visibles.fade}
-  <div transition:fade class="wrap">
+  <div transition:fade={{duration:2000, delay:1000}} class="wrap">
     <h1>fade 예제</h1>
   </div>
 {/if}
 
 {#if visibles.slide}
-  <div transition:slide class="wrap">
+  <div transition:slide={{easing:bounceInOut}} class="wrap">
     <h1>slide 예제</h1>
   </div>
 {/if}
 
 {#if visibles.blur}
-  <div transition:blur class="wrap">
+  <div transition:blur={{opacity:100, amount:100}} class="wrap">
     <h1>blur 예제</h1>
   </div>
 {/if}
 
 {#if visibles.fly}
-  <div transition:fly={{x:100}} class="wrap">
+  <div transition:fly={{y:100, x:200, opacity:50}} class="wrap">
     <h1>fly 예제</h1>
   </div>
 {/if}
 
 {#if visibles.scale}
-  <div transition:scale class="wrap">
+  <div transition:scale={{start:10}} class="wrap">
     <h1>scale 예제</h1>
   </div>
 {/if}
